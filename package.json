@@ -1,7 +1,7 @@
 {
   "name": "nuxt-merge-asyncdata",
-  "version": "1.0.0",
-  "description": "Script to merge asuncData methods on vue components in nuxt framework.",
+  "version": "0.1.0",
+  "description": "Util to merge asyncData methods on route pages in nuxt framework.",
   "main": "index.js",
   "scripts": {
     "test": "node --inspect ./test.js"
@@ -22,7 +22,5 @@
     "url": "https://github.com/n1kk/nuxt-merge-asyncdata/issues"
   },
   "homepage": "https://github.com/n1kk/nuxt-merge-asyncdata#readme",
-  "devDependencies": {
-    "standard": "^10.0.3"
-  }
+  "dependencies": {}
 }

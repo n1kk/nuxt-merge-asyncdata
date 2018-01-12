@@ -1,0 +1,9 @@
+.gitignore
+.vscode
+node_modules
+.DS_Store
+.editorconfig
+.idea
+.git
+*.tgz
+test.js
