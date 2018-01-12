@@ -95,7 +95,7 @@ Result
 
 ### nmerge.manual({...}) nmerge.controlled({...})
 
-These methods will just flatten out mixins hierarchy removing duplicates and filter out mixins without asyncData methods, resulted array will be passed to components asyncData method in 'mixins' field to manually called asyncData methods if needed. 
+These methods will just flatten out mixins hierarchy removing duplicates and filter out mixins without asyncData methods, resulted array will be passed to component asyncData method in `mixins` field. 
 
 Difference between `manual` and `controlled` is that if asyncData is not present on passed component then `controlled` will assume that invocation of base asyncData methods is desired and will fallback on default (asynchronous) method whether `manual` will do nothing.
 
@@ -119,7 +119,7 @@ let comp2 = {
   asyncData: async (ctx) => { ... }
 }
 
-export default nmerge.sync({
+export default nmerge.controlled({
   mixins: [base, comp2],
   asyncData: async ({mixins}) => {
     // mixins[0] === core
