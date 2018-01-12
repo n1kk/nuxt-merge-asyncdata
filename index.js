@@ -35,7 +35,7 @@ function merge_sync (comp) {
       comp.asyncData = async (context) => {
         let lastValue
         for (let i = 0; i < methods.length; i++) {
-          context.asyncDataValue = lastValue
+          context.asyncDataResult = lastValue
           lastValue = Object.assign(lastValue || {}, await methods[i](context))
         }
         return lastValue
@@ -45,7 +45,7 @@ function merge_sync (comp) {
   return comp
 }
 
-function merge_manual (comp) {
+function merge_manual (comp, fallback) {
   if (comp && comp.mixins) {
     let mixins = flattenMixins(comp.mixins)
     if (mixins.length) {
@@ -55,7 +55,7 @@ function merge_manual (comp) {
           context.mixins = mixins
           return await original(context)
         }
-      } else {
+      } else if (fallback) {
         return merge_async(comp)
       }
     }
@@ -65,7 +65,8 @@ function merge_manual (comp) {
 
 const merge_default = merge_async
 merge_default.sync = merge_sync
-merge_default.manual = merge_manual
+merge_default.manual = (comp) => merge_manual(comp, false)
+merge_default.controlled = (comp) => merge_manual(comp, true)
 
 //export default merge_default
 var exports = module.exports = merge_default
