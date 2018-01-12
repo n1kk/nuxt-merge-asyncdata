@@ -1,0 +1,28 @@
+{
+  "name": "nuxt-merge-asyncdata",
+  "version": "1.0.0",
+  "description": "Script to merge asuncData methods on vue components in nuxt framework.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node --inspect ./test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/n1kk/nuxt-merge-asyncdata.git"
+  },
+  "keywords": [
+    "nuxt",
+    "nuxtjs",
+    "merge",
+    "asyncData"
+  ],
+  "author": "n1kk",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/n1kk/nuxt-merge-asyncdata/issues"
+  },
+  "homepage": "https://github.com/n1kk/nuxt-merge-asyncdata#readme",
+  "devDependencies": {
+    "standard": "^10.0.3"
+  }
+}
