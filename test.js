@@ -17,7 +17,9 @@ let comp = {
   name: 'comp',
   mixins: [baseComp],
   asyncData: async (ctx) => {
-    await new Promise((res, rej) => setTimeout(() => {res()}, 1))
+    console.log("wait")
+    await new Promise(res => setTimeout(() => res(), 1000))
+    console.log("done")
     order.push(comp)
     return {
       comp: true,
@@ -71,7 +73,7 @@ let mergedSync = merge.sync({
   asyncData: async (ctx) => {
     order.push(mergedSync)
     return {
-      asyncDataValue: Object.assign({}, ctx.asyncDataValue),
+      asyncDataResult: Object.assign({}, ctx.asyncDataResult),
       ctx: Object.assign({}, ctx),
       mergedSync: true,
       val: 'mergedSync'
@@ -127,8 +129,8 @@ async function runTest() {
       "mergedSync should invoke all inherited methods in order" ],
     [ syncValue.ctx.origin === mergedSync,
       "mergedSync should get passed context" ],
-    [ syncValue.asyncDataValue.val === 'comp2',
-      "mergedManual should get result of previous call in context 'asyncDataValue'" ],
+    [ syncValue.asyncDataResult.val === 'comp2',
+      "mergedManual should get result of previous call in context 'asyncDataResult'" ],
     [ syncValue.val === 'mergedSync',
       "mergedSync should have merged value overriden by higher methods" ],
   ])
@@ -145,6 +147,9 @@ async function runTest() {
     [ manualValue.val === 'mergedManual',
       "mergedManual should have merged value overriden by higher methods" ],
   ])
+  
+  console.log("Passed")
 }
 
 runTest()
+
